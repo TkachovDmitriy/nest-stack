@@ -4,6 +4,7 @@
   "description": "Production-ready NestJS boilerplate built on Clean Architecture",
   "private": true,
   "license": "UNLICENSED",
+  "packageManager": "pnpm@11.1.2",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

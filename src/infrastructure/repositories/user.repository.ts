@@ -86,8 +86,7 @@ export class UserRepository {
 
     const firstName =
       updateData.firstName !== undefined ? updateData.firstName : currentUser.firstName;
-    const lastName =
-      updateData.lastName !== undefined ? updateData.lastName : currentUser.lastName;
+    const lastName = updateData.lastName !== undefined ? updateData.lastName : currentUser.lastName;
     const companyName =
       updateData.companyName !== undefined ? updateData.companyName : currentUser.companyName;
 
