@@ -39,13 +39,6 @@ export const envSchema = z.object({
   // reCAPTCHA
   RECAPTCHA_SECRET_KEY: z.string().min(1),
   RECAPTCHA_SITE_KEY: z.string().min(1),
-  // Stripe (optional — add when integrating Stripe payments)
-  STRIPE_SECRET_KEY: z.string().min(1).optional(),
-  STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
-  STRIPE_PRODUCT_ID: z.string().optional(),
-  // PayMongo (optional — add when integrating PayMongo payments)
-  PAYMONGO_SECRET_KEY: z.string().min(1).optional(),
-  PAYMONGO_WEBHOOK_SECRET: z.string().min(1).optional(),
   // Elasticsearch
   ELASTIC_ENTERPRISE_SEARCH_API_KEY: z.string(),
   ELASTIC_ENTERPRISE_SEARCH_BASE_URL: z.string(),
