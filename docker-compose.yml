@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: db_kumakatok
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - kumakatok_network
+
+  redis:
+    image: redis:latest
+    container_name: redis_kumakatok
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - kumakatok_network
+
+  mailserver:
+    image: rnwood/smtp4dev:v3
+    container_name: mailserver
+    ports:
+      - "9000:80"
+      - "25:25"
+    environment:
+      - ServerOptions__HostName=mailserver
+      - ServerOptions__AllowRemoteConnections=true
+    networks:
+      - kumakatok_network
+    volumes:
+      - smtp4dev-data:/smtp4dev
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    name: kumakatok_postgres_data
+  redis_data:
+    name: kumakatok_redis_data
+  smtp4dev-data:
+    name: kumakatok_smtp4dev_data
+
+networks:
+  kumakatok_network:
+    name: kumakatok_network
+    driver: bridge

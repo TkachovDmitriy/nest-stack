@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  },
+  "include": ["./public", "./src", "./prisma", "./scripts"],
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts", "swagger"]
+}

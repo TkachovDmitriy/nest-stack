@@ -1,0 +1,14 @@
+---
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - '.yamllint'
+extends: default
+rules:
+  line-length:
+    level: warning
+    max: 215
+  trailing-spaces: disable
+  comments-indentation: disable
+ignore: |
+  /spec/vcr/

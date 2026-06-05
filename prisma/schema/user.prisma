@@ -1,0 +1,40 @@
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  phoneNumber   String
+  firstName     String?
+  lastName      String?
+  refreshToken  String?
+  slug          String?   @unique
+  slugId        String?   @unique
+
+  lastLoginAt   DateTime?
+  birthDate     DateTime?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  facebookLink  String?
+  avatar        String?
+  userType      String?
+  companyName   String?
+  licenseId     String?
+
+  storefrontBanner      String?
+  storefrontDescription String?
+
+  isEmailVerified Boolean @default(false)
+
+  provider   String  @default("local")
+  providerId String?
+
+  twoFactorEnabled Boolean @default(false)
+
+  bankName          String?
+  bankAccountNumber String?
+  gcashNumber       String?
+
+  @@index([slugId])
+  @@map("users")
+}

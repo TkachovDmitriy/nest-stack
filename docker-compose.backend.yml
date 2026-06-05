@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      PRETTY_LOGGING: ${PRETTY_LOGGING}
+      ENV_NAME: ${ENV_NAME}
+      NODE_ENV: production
+      LOG_LEVEL: ${LOG_LEVEL}
+      PORT: ${PORT}
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      MAILCHIMP_API_KEY: ${MAILCHIMP_API_KEY}
+      MAILCHIMP_FROM_EMAIL: ${MAILCHIMP_FROM_EMAIL}
+      MAILCHIMP_FROM_NAME: ${MAILCHIMP_FROM_NAME}
+      MAILCHIMP_VERIFICATION_TEMPLATE: ${MAILCHIMP_VERIFICATION_TEMPLATE}
+      EMAIL_VERIFICATION_SECRET: ${EMAIL_VERIFICATION_SECRET}
+      REDIS_URL: redis://redis:6379
+      APP_URL: ${APP_URL}
+    depends_on:
+      - postgres
+      - redis
+      - mailserver
+    networks:
+      - kumakatok_network
+    restart: unless-stopped
+
+
+networks:
+  kumakatok_network:
+    external: true
