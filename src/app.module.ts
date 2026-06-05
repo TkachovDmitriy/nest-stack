@@ -15,7 +15,14 @@ import { EmailModule } from './use-cases/email/email.module';
 import { HealthCheckModule } from './use-cases/health-check/health-check.module';
 
 @Module({
-  imports: [SentryModule.forRoot(), HealthCheckModule, PrismaModule, AuthModule, EmailModule, S3Module],
+  imports: [
+    SentryModule.forRoot(),
+    HealthCheckModule,
+    PrismaModule,
+    AuthModule,
+    EmailModule,
+    S3Module,
+  ],
   controllers: [HealthCheckController, AuthController],
   providers: [
     JwtService,

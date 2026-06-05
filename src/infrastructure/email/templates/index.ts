@@ -1,6 +1,11 @@
 import { passwordResetTemplate } from './password-reset.template';
 import { twoFactorTemplate } from './two-factor.template';
-import { BaseEmailData, PasswordResetEmailData, TwoFactorEmailData, VerificationEmailData } from './types';
+import {
+  BaseEmailData,
+  PasswordResetEmailData,
+  TwoFactorEmailData,
+  VerificationEmailData,
+} from './types';
 import { verificationTemplate } from './verification-email.template';
 
 export interface EmailTemplate<T extends BaseEmailData = BaseEmailData> {
